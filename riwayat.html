@@ -13,37 +13,78 @@
     <header class = "navbar">
         <div class = "container navbar-inner">
         <input type = "checkbox" id = "navToogle" class = "nav-toogle">
-        <label for = "navToogle" class = "hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
             <a href = "index.html" class ="logo">🎓 SILA</a> 
+            <label for = "navToogle" class = "hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            
             <!-- <p>Sistem Informasi Layanan Akademik</p> -->
             <nav>
                 <ul class="nav-menu">
                 <!-- Link -->
                     <li><a href="index.html" class = "active">Beranda</a></li>
                     <li><a href="layanan.html">Ajukan Layanan</a></li>
-                    <li><a href="riwayat.html">Riwayat</a></li>
+                    <li><a href="riwayat.html"  class = "active">Riwayat</a></li>
                 </ul>
             </nav> 
         </div>
     </header>
-    <main>
-        <section class = "section">
+    <main> 
+        <section class="section"> 
             <div class="container">
                 <h1>Riwayat Pengajuan</h1>
-                <p class = "section-desc"><em>🚧 Coming Soon - Tabel riwayat akan tersedia pada tahap berikutnya</em></p>
-                <a href="index.html" class = "btn btn-outline">⬅️ Kembali ke Beranda</a>
+                <table class = "data-table">
+                    <caption>Data Pengajuan Layanan Akademik</caption>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>NIM</th>
+                            <th>Layanan</th>
+                            <th>Tanggal</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Ahmad Fauzi</td>
+                            <td>12345678</td>
+                            <td>SKA</td>
+                            <td>20 FEB 2026</td>
+                            <td>Diproses</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Siti Nurhaliza</td>
+                            <td>23456789</td>
+                            <td>CAK</td>
+                            <td>21 FEB 2026</td>
+                            <td>Diproses</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Budi Santoso</td>
+                            <td>34567890</td>
+                            <td>TNM</td>
+                            <td>22 FEB 2026</td>
+                            <td>Selesai</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Dewi Lestari</td>
+                            <td>45678901</td>
+                            <td>PDA</td>
+                            <td>23 FEB 2026</td>
+                            <td>Diproses</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </section>
-    </main>
-    <!-- <main>
-        <h2></h2>
-        <p class = "section-desc"><em>🚧 </em></p>
-        <a href="index.html">⬅️ Kembali ke Beranda</a>
-    </main> -->
+        </section> 
+    </main> 
 
     <!-- Footer -->
     <footer class ="footer">
