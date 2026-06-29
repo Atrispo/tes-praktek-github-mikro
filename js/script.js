@@ -158,6 +158,6 @@ function initForm() {
     alert(
       editMode ? "Perubahan berhasil disimpan" : "pengajuan berhasil disimpan!",
     );
-    window.locatoin.href = "riwayat.html";
+    window.location.href = "riwayat.html";
   });
 }
