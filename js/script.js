@@ -1,4 +1,4 @@
-const LAYANAN = ["SKA", "CKA", "TNM", "PDA"];
+// const LAYANAN = ["SKA", "CKA", "TNM", "PDA"];
 
 // function formatTanggal(dateStr) {
 //     const bulan = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
@@ -49,12 +49,12 @@ const LAYANAN = ["SKA", "CKA", "TNM", "PDA"];
 // }
 
 function getData() {
-  const raw = localStorage.gerItem("sila_data");
+  const raw = localStorage.getItem("sila_data");
   return raw ? JSON.parse(raw) : [];
 }
 
 function saveData(data) {
-  localStorage.setItem("sila_data", JSON, stringify(data));
+  localStorage.setItem("sila_data", JSON.stringify(data));
 }
 
 function formatTanggal(dateStr) {
@@ -79,7 +79,7 @@ function formatTanggal(dateStr) {
 function initForm() {
   const form = document.getElementById("formPengajuan");
   if (!form) return;
-  const urlParams = new URLSearchParams(windows.location.search);
+  const urlParams = new URLSearchParams(window.location.search);
   const editId = urlParams.get("edit");
   let editMode = false;
 
@@ -106,6 +106,8 @@ function initForm() {
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+    let data = getData();
+    
 
     const nama = document.getElementById("nama").value.trim();
     const nim = document.getElementById("nim").value.trim();
@@ -161,3 +163,91 @@ function initForm() {
     window.location.href = "riwayat.html";
   });
 }
+
+function initRiwayat() {
+  const tbody = document.getElementById('tableBody');
+  const emptyState = document.getElementById('emptyState');
+  const dataCount = document.getElementById('dataCount');
+  const btnHapusSemua = document.getElementById('btnHapusSemua');
+  if (!tbody) return; 
+
+  renderTable(); 
+  if (btnHapusSemua) {
+    btnHapusSemua.addEventListener('click', function () {
+
+    if (confirm('Apakah Anda yakin ingin menghapus sistem seluruh riwayat data?')) {
+      saveData([]); 
+      renderTable(); // Refresh tabel
+    }
+  });
+}
+  function renderTable() {
+
+    const data = getData();
+
+    if (dataCount) {
+      dataCount.textContent = data.length + ' pengajuan';
+    }
+
+
+    if (data.length === 0) {
+      tbody.innerHTML = ''; 
+      if (emptyState) emptyState.style.display = 'block';
+      if (btnHapusSemua) btnHapusSemua.style.display = 'none';
+      return; // hentikan langkah dan keluar
+    }
+    if (emptyState) emptyState.style.display = 'none';
+    if (btnHapusSemua) btnHapusSemua.style.display = 'inline-block';
+
+    tbody.innerHTML = '';
+    for (let i = 0; i < data.length; i++) {
+      const item = data[i];
+      const tr = document.createElement('tr'); 
+
+
+      tr.innerHTML =
+        '<td>' + (i + 1) + '</td>' +
+        '<td>' + item.nama + '</td>' +
+        '<td>' + item.nim + '</td>' +
+        '<td>' + item.layanan + '</td>' +
+        '<td>' + formatTanggal(item.tanggal) + '</td>' +
+        '<td>' +
+        '<button class="btn-edit" data-id="' + item.id + '">✏️Edit</button> ' +
+        '<button class="btn-hapus" data-id="' + item.id + '">🗑Hapus</button>' +
+        '</td>';
+      tbody.appendChild(tr);
+    }
+
+    const btnEdit = document.querySelectorAll('.btn-edit');
+    btnEdit.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const id = this.getAttribute('data-id'); 
+        window.location.href = 'layanan.html?edit=' + id; 
+      });
+    });
+// Event listener Update tombol HAPUS di per baris
+    const btnHapus = document.querySelectorAll('.btn-hapus');
+    btnHapus.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const id = Number(this.getAttribute('data-id'));
+        if (confirm('Hapus pengajuan riwayat ini selamalamanya?')) {
+          let data = getData();
+
+          data = data.filter(function (item) {
+            return item.id !== id;
+
+          });
+          saveData(data);
+          renderTable();
+        }
+      });
+    });
+  }  
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  initForm();
+  initRiwayat();
+});
+  
+
