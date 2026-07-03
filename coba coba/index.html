@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Dashboard Profil & Form Input - Tailwind</title>
+        <!-- Tailwind CSS Play CDN -->
+        <script src="https://tailwindcss.com"></script>
+    </head>
+    <body class="bg-slate-900 text-slate-100 min-h-screen py-12 px-4">
+        
+        <div class="max-w-lg mx-auto space-y-8">
+            
+            <!-- 1. KARTU PROFIL UTAMA -->
+            <div class="bg-slate-800 p-8 rounded-2xl shadow-xl text-center border border-slate-700/30">
+                <!-- FOTO PROFIL (Menggunakan gambar asli dari Unsplash) -->
+                <div class="flex justify-center mb-5">
+                    <img 
+                        src="https://unsplash.com" 
+                        alt="Foto Aditya Gunawan" 
+                        class="w-24 h-24 rounded-full border-4 border-slate-700 object-cover shadow-lg shadow-blue-500/10"
+                    >
+                </div>
+
+                <h1 class="text-3xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Aditya Gunawan</h1>
+                <p class="text-slate-400 text-sm mb-6 uppercase tracking-widest font-semibold">Frontend Developer</p>
+                <p class="text-slate-300 leading-relaxed mb-8">Mendalami rekayasa desain antarmuka responsif untuk platform teknologi mutakhir terdesentralisasi.</p>
+                
+                <div class="grid grid-cols-2 gap-4 mb-8 text-left">
+                    <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-700/50">
+                        <h3 class="font-bold text-blue-400">Teknik Web</h3>
+                        <ul class="text-sm text-slate-400 mt-2 space-y-1">
+                            <li>HTML5 & CSS3</li>
+                            <li>JavaScript (ES6)</li>
+                            <li>React & Vite</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-700/50">
+                        <h3 class="font-bold text-emerald-400">UI/UX Design</h3>
+                        <ul class="text-sm text-slate-400 mt-2 space-y-1">
+                            <li>Figma Studio</li>
+                            <li>Wireframing</li>
+                            <li>Prototyping Dinamis</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition duration-300 ease-in-out shadow-lg shadow-blue-600/30 active:scale-95">Kirim Pesan</button>
+                    <button class="bg-transparent hover:bg-slate-700 text-slate-200 font-semibold py-3 px-6 rounded-xl border border-slate-600 transition duration-300 ease-in-out active:scale-95">Unduh Portofolio</button>
+                </div>
+            </div>
+
+            <!-- 2. FORMULIR INPUT (TAMBAH DATA BARU) -->
+            <div class="bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700/30">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="p-2 bg-blue-500/10 rounded-lg text-blue-400">
+                        <!-- Ikon Plus (SVG murni) -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-100">Tambah Riwayat Proyek</h2>
+                        <p class="text-xs text-slate-400">Kirim data proyek baru untuk ditampilkan di bawah.</p>
+                    </div>
+                </div>
+
+                <form id="projectForm" class="space-y-4">
+                    <div>
+                        <label for="projectName" class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Nama Proyek</label>
+                        <input 
+                            type="text" 
+                            id="projectName" 
+                            required 
+                            placeholder="Contoh: Aplikasi Web3 Wallet" 
+                            class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition duration-200 text-sm"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="projectRole" class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Peran / Tech Stack</label>
+                        <input 
+                            type="text" 
+                            id="projectRole" 
+                            required 
+                            placeholder="Contoh: Frontend (React + Tailwind)" 
+                            class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition duration-200 text-sm"
+                        >
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-3 px-4 rounded-xl transition duration-300 ease-in-out shadow-lg shadow-blue-600/20 active:scale-[0.98] flex items-center justify-center gap-2 text-sm"
+                    >
+                        Kirim & Tambahkan Data
+                    </button>
+                </form>
+            </div>
+
+            <!-- 3. KONTAINER DAFTAR HASIL INPUTAN -->
+            <div class="bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700/30">
+                <div class="flex items-center justify-between mb-4 border-b border-slate-700/50 pb-4">
+                    <h3 class="font-bold text-slate-100 flex items-center gap-2">
+                        <!-- Ikon Folder SVG -->
+                        <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9l-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        Daftar Hasil Kirim
+                    </h3>
+                    <span id="dataCount" class="bg-slate-900 text-slate-400 text-xs px-2.5 py-1 rounded-full border border-slate-700">0 Item</span>
+                </div>
+
+                <!-- List data dinamis -->
+                <div id="dataContainer" class="space-y-3 max-h-[350px] overflow-y-auto pr-1">
+                    <!-- Kondisi awal jika belum diinput -->
+                    <div id="emptyState" class="text-center py-8 text-slate-500">
+                        <p class="text-sm">Belum ada data yang dikirim berulang.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- LOGIKA JAVASCRIPT UNTUK MENYIMPAN BERULANG -->
+        <script>
+            const form = document.getElementById('projectForm');
+            const dataContainer = document.getElementById('dataContainer');
+            const emptyState = document.getElementById('emptyState');
+            const dataCount = document.getElementById('dataCount');
+
+            let count = 0;
+
+            form.addEventListener('submit', function(e) {
+                // Mencegah halaman refresh bawaan browser
+                e.preventDefault();
+
+                // Ambil nilai dari elemen input
+                const nameInput = document.getElementById('projectName').value;
+                const roleInput = document.getElementById('projectRole').value;
+
+                // Sembunyikan status kosong jika ini data pertama
+                if (count === 0) {
+                    emptyState.classList.add('hidden');
+                }
+
+                count++;
+                dataCount.textContent = `${count} Item`;
+
+                // Membuat elemen pembungkus kartu baru
+                const newRow = document.createElement('div');
+                newRow.className = "bg-slate-900/60 p-4 rounded-xl border border-slate-700/50 flex items-center justify-between gap-4 animate-[fadeIn_0.2s_ease-out]";
+                
+                newRow.innerHTML = `
+                    <div class="flex items-start gap-3">
+                        <div class="p-1.5 bg-emerald-500/10 rounded-lg text-emerald-400 mt-0.5">
+                            <!-- Ikon Centang Hijau SVG -->
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-slate-200 text-sm">${nameInput}</h4>
+                            <p class="text-xs text-slate-400 mt-0.5">${roleInput}</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-mono bg-slate-800 text-slate-500 px-2 py-1 rounded border border-slate-700/30">#${count}</span>
+                `;
+
+                // Menyisipkan data baru di urutan paling atas di dalam daftar hasil
+                dataContainer.insertBefore(newRow, dataContainer.firstChild);
+
+                // Reset isi formulir menjadi kosong kembali
+                form.reset();
+                })
